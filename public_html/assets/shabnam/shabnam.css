@@ -1,0 +1,19 @@
+@font-face {
+
+    font-family: 'Shabnam FD';
+
+    src: url('Shabnam-FD.eot');
+
+    src: local('Shabnam FD'), url('Shabnam-FD.woff') format('woff'), url('Shabnam-FD.ttf') format('truetype');
+
+    font-weight: normal;
+
+    font-style:normal;
+
+}
+body {
+    direction: rtl;
+    line-height: 1.8;
+    font-family: Shabnam, Tahoma, "DejaVu Sans", helvetica, arial, freesans, sans-serif;
+}
+

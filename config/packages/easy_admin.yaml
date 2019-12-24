@@ -1,0 +1,41 @@
+easy_admin:
+   user:
+      display_name: true
+      display_avatar: true
+      name_property_path: 'email'
+      avatar_property_path: 'gravatar'
+   design:
+      assets:
+          css:
+           # ...
+           - 'assets/shabnam/shabnam.css'
+      menu:
+          - {label: 'users.users', icon: 'file-list', entity: 'User', permission: 'ROLE_ADMIN'}
+
+          - label: 'blog.Blog'
+            icon: 'users'
+            children:
+                - { label: 'blog.posts', icon: 'file-list', entity: 'BlogPost', permission: 'ROLE_ADMIN' }
+                - { label: 'blog.cats', icon: 'file-list', entity: 'BlogCat', permission: 'ROLE_ADMIN' }
+   entities:
+        User:
+          class: App\Entity\SysUser
+          form:
+          fields:
+           - email
+           # if administrators are allowed to edit users' passwords and roles, add this:
+           - { property: 'plainPassword', type: 'text', type_options: { required: false } }
+           - { property: 'roles', type: 'choice', type_options: { multiple: true, choices: { 'ROLE_USER': 'ROLE_USER', 'ROLE_ADMIN': 'ROLE_ADMIN' } } }
+
+        BlogPost:
+          class: App\Entity\BlogPost
+          label:  'blog.posts'
+          help: 'blog.post.help'
+
+          list:
+            fields: ['id', { property: 'title', label: 'blog.post.title' }, { property: 'cat', label: 'blog.post.cat' }, { property: 'publish', label: 'blog.post.publish' }]
+        BlogCat:
+          class: App\Entity\BlogCat
+          label:  'blog.cats'
+          list:
+            fields: ['id', 'catCode', 'catName']

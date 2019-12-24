@@ -1,0 +1,16 @@
+{% extends 'theme.html.twig' %}
+
+{% block title %}{% trans %}user_login{% endtrans %}{% endblock %}
+
+{% block pageBody %}
+    {% for error in errors %}
+        <li>{{ error.message }}</li>
+    {% endfor %}
+    {{ form_start(form) }}
+        {{ form_label(form.username) }}
+        {{ form_widget(form.username) }}
+        {{ form_label(form.password) }}
+        {{ form_widget(form.password) }}
+        {{ form_widget(form.submit)}}
+    {{ form_end(form) }}
+{% endblock %}
